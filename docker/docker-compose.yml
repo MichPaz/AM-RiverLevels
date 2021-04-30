@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  am-river-rdm:
+    build: ./docker-rdm
+    command: ["bash","/usr/src/api/start.sh"]
+    restart: always
+    ports:
+      - "${RDM_PORT}:${RDM_PORT}"
+    expose:
+      - "${RDM_PORT}"
+    container_name: ${RDM_HOST}
+    depends_on:
+      - am-river-psql
+    volumes:
+      - ${RDM_PATH}:/usr/src/api
+      - ${STORAGE_PATH}/rdm/storage/json:/usr/src/storage/json
+    env_file:
+      - ./.env
+    environment:
+      - PSQL_FORCE=${PSQL_FORCE}
+      - ENV_SERVER=${ENV_SERVER}
+
+  am-river-psql:
+    build: ./docker-psql
+    container_name: ${PSQL_HOST}
+    restart: always
+    expose:
+      - "5432"
+    volumes:
+      - ${PSQL_PATH}/data:/var/lib/postgresql/data
