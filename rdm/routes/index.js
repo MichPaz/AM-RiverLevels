@@ -1,13 +1,16 @@
 var express = require('express');
 var router = express.Router();
 
+router.use('/dataAna', require('./getDataAna'))
+router.use('/populate', require('./populate'))
+
 const classroomController = require('../controllers').classroom;
 const studentController = require('../controllers').student;
 const lecturerController = require('../controllers').lecturer;
 const courseController = require('../controllers').course;
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 

@@ -18,8 +18,10 @@ services:
     env_file:
       - ./.env
     environment:
-      - PSQL_FORCE=${PSQL_FORCE}
+      # - RDM_HOST=${RDM_HOST}
+      - FORCE=${FORCE}
       - ENV_SERVER=${ENV_SERVER}
+      - NPM_INSTALL=${NPM_INSTALL}
 
   am-river-psql:
     build: ./docker-psql
