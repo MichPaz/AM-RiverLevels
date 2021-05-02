@@ -1,8 +1,10 @@
 const fs = require('fs')
+const axios = require('axios')
 const Estacao = require('../models').Estacao;
 const Medicao = require('../models').Medicao;
+const apiSnirh = require('./getDataAna').apiSnirh
 
-async function populateByData(req, res) {
+async function populateBygetDadosTelemetricos(req, res) {
 
     const anaPathData = req.query.anaPathData
 
@@ -43,4 +45,43 @@ async function populateByData(req, res) {
     return res.send(anaPathData)
 }
 
-module.exports = { populateByData }
+async function populateEstacoes(req, res) {
+
+    const estacoesCod = req.query.estacoes.split(',')
+    console.log('estacoes', estacoesCod)
+    let resMsg = {
+        cadastrado: [],
+        erro: [],
+    }
+
+
+    for (const estacaoCod of estacoesCod) {
+        console.log(`estacao ${estacoesCod.indexOf(estacaoCod) + 1} de ${estacaoCod.length}`)
+
+        await axios.get(`${apiSnirh.url_base}/estacaos/search/findByIdIn?documentos=${estacaoCod}`)
+            .then(async response => {
+                let estacao = response.data._embedded.estacaos[0]
+
+                estacao.id = estacao.idFormatadoComZero
+
+                await Estacao.create(estacao)
+                    .then(() => {
+                        resMsg.cadastrado.push(estacao)
+                        // console.log('estacao cadastrada:', estacao)
+                    })
+                    .catch((err) => {
+                        resMsg.erro.push(estacao)
+                        console.log('err:', err)
+                        // console.log('estacao não cadastrada:', estacao)
+                    })
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+
+    return res.send(resMsg)
+}
+
+module.exports = { populateBygetDadosTelemetricos, populateEstacoes }

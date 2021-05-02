@@ -16,9 +16,15 @@ const estacoes = [
 ]
 
 const apiSnirh = {
-    url_base: 'http://www.snirh.gov.br/hidroweb/rest/api',
-    route: '/documento/gerarTelemetricas',
+    url_base: 'http://www.snirh.gov.br/hidroweb/rest',
+    route: '/api/documento/gerarTelemetricas',
     queryParams: (startDate, endDate) => ({
+        codigosEstacoes: estacoes.join([separador = ',']),
+        tipoArquivo: '3',
+        periodoInicial: startDate,
+        periodoFinal: endDate,
+    }),
+    queryParamsWithEstacoes: (estacoes, startDate, endDate) => ({
         codigosEstacoes: estacoes.join([separador = ',']),
         tipoArquivo: '3',
         periodoInicial: startDate,
@@ -145,11 +151,14 @@ async function getDadosHidrometeorologicos(req, res) {
         return res.status(400).send('query endDate is required')
 
     const periods = slicePeriods({ startDate, endDate }, parseInt(daysRange))
+    console.log('periods', periods)
 
     const anaPathData = new Date().toISOString().replace(/[:|\.]/g, '-')
 
 
     for (const estacao of estacoes) {
+
+        let count = 1
 
         console.log(`estacao ${estacoes.indexOf(estacao) + 1} de ${estacoes.length}`)
         const path = `${process.cwd()}${'/../storage/json/dadosHidrometeorologicos'}/${anaPathData}/${estacao}`
@@ -158,8 +167,8 @@ async function getDadosHidrometeorologicos(req, res) {
 
             console.log(`periodo ${periods.indexOf(period) + 1} de ${periods.length}`)
 
-            console.log(`=========== fase ${(estacoes.indexOf(estacao) + 1) * (periods.indexOf(period) + 1)} de ${estacoes.length * periods.length} ===========`)
-
+            console.log(`=========== fase ${count} de ${estacoes.length * periods.length} ===========`)
+            count++
 
             await axios.get(`${apiTelemetria.url_base}${apiTelemetria.route}`, {
                 params: apiTelemetria.queryParams(estacao, period.startDate, period.endDate)
@@ -183,4 +192,4 @@ async function getDadosHidrometeorologicos(req, res) {
     return res.send(anaPathData)
 }
 
-module.exports = { getDadosTelemetricos, getDadosHidrometeorologicos }
+module.exports = { getDadosTelemetricos, getDadosHidrometeorologicos, apiSnirh }

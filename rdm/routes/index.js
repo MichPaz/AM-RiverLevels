@@ -5,9 +5,9 @@ const controler = require('../controllers/getDataAna')
 
 router.get('/datosTelemetricos', controler.getDadosTelemetricos)
 router.get('/dadosHidrometeorologicos', controler.getDadosHidrometeorologicos)
-router.use('/populate', require('./populate'))
-
-// console.log('roi')
+router.get('/populateBygetDadosTelemetricos', require('../controllers/populate').populateBygetDadosTelemetricos)
+router.get('/populateEstacoes', require('../controllers/populate').populateEstacoes)
+router.use('/estacao', require('./estacao'))
 
 const classroomController = require('../controllers').classroom;
 const studentController = require('../controllers').student;
