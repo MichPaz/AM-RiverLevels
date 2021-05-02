@@ -1,8 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-router.use('/dataAna', require('./getDataAna'))
+const controler = require('../controllers/getDataAna')
+
+router.get('/datosTelemetricos', controler.getDadosTelemetricos)
+router.get('/dadosHidrometeorologicos', controler.getDadosHidrometeorologicos)
 router.use('/populate', require('./populate'))
+
+// console.log('roi')
 
 const classroomController = require('../controllers').classroom;
 const studentController = require('../controllers').student;

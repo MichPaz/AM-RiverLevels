@@ -18,6 +18,8 @@
     "nodemon": "^2.0.7",
     "pg": "^8.2.1",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^6.2.4"
+    "sequelize": "^6.2.4",
+    "xml-js": "^1.6.11",
+    "xml2json": "^0.12.0"
   }
 }
