@@ -2,6 +2,7 @@ const fs = require('fs')
 const axios = require('axios')
 const Estacao = require('../models').Estacao;
 const Medicao = require('../models').Medicao;
+const DadosHidrometereologico = require('../models').DadosHidrometereologico;
 const apiSnirh = require('./getDataAna').apiSnirh
 
 async function populateBygetDadosTelemetricos(req, res) {
@@ -84,4 +85,44 @@ async function populateEstacoes(req, res) {
     return res.send(resMsg)
 }
 
-module.exports = { populateBygetDadosTelemetricos, populateEstacoes }
+async function populateByDadosHidrometeorologicos(req, res) {
+
+    const { anaPathData } = req.query
+
+    if (!anaPathData)
+        return res.status(400).send('query path is required')
+
+    const path = `${process.cwd()}${'/../storage/json'}/dadosHidrometeorologicos/${anaPathData}`
+    console.log('path', path)
+
+    if (!fs.existsSync(path)) {
+        return res.status(400).send('anaPathData not found')
+    }
+
+    let estacoes = fs.readdirSync(path)
+
+    for (const estacao of estacoes) {
+
+        console.log(`estacao ${estacoes.indexOf(estacao) + 1} de ${estacoes.length}`)
+        const estacaoPath = path + '/' + estacao
+        let files = fs.readdirSync(estacaoPath)
+
+        for (const file of files) {
+
+            const filePath = estacaoPath + '/' + file
+            let data = JSON.parse(fs.readFileSync(filePath));
+
+            console.log(`file ${files.indexOf(file) + 1} de ${files.length}`)
+            console.log(filePath);
+
+            for (let medicao of data) {
+                await DadosHidrometereologico.create(medicao)
+                    .catch(() => { })
+            }
+        }
+    }
+
+    return res.send(anaPathData)
+}
+
+module.exports = { populateBygetDadosTelemetricos, populateEstacoes, populateByDadosHidrometeorologicos }
