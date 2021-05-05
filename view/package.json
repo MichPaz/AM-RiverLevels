@@ -1,0 +1,80 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "/siflex/web/dev/",
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^23.0.0",
+    "@ckeditor/ckeditor5-react": "^2.1.0",
+    "@date-io/date-fns": "^1.3.13",
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "@material-ui/pickers": "^3.3.10",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.4.1",
+    "customize-cra": "^1.0.0",
+    "date-fns": "^2.21.1",
+    "file-saver": "^2.0.2",
+    "flux": "^3.1.3",
+    "font-awesome": "^4.7.0",
+    "formik": "^2.1.4",
+    "json": "^9.0.6",
+    "notistack": "^1.0.0",
+    "react": "^16.14.0",
+    "react-app-rewired": "^2.1.6",
+    "react-avatar-editor": "^11.0.7",
+    "react-bootstrap": "^1.0.0",
+    "react-csv": "^2.0.3",
+    "react-dom": "^16.14.0",
+    "react-dropzone": "^11.2.0",
+    "react-icons": "^3.9.0",
+    "react-redux": "^7.2.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.4.3",
+    "react-simple-tree-menu": "^1.1.15",
+    "react-swipeable-views": "^0.13.9",
+    "recharts": "^1.8.5",
+    "redux": "^4.0.5",
+    "suneditor-react": "^2.14.4",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "yup": "^0.28.3"
+  },
+  "scripts": {
+    "start": "PORT=${VIEW_PORT} react-scripts start",
+    "build": "react-scripts build",
+    "test": "GENERATE_SOURCEMAP=false react-app-rewired build",
+    "eject": "react-scripts eject",
+    "dev": "npm run start",
+    "dev:build": "GENERATE_SOURCEMAP=false react-app-rewired build",
+    "prod": "GENERATE_SOURCEMAP=false react-app-rewired build",
+    "deploy:dev": "npm run build && npm run start",
+    "deploy:test": "npm run build",
+    "deploy:prod": "npm run build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-transform-imports": "^2.0.0",
+    "babel-preset-react": "^6.24.1",
+    "html-loader": "^1.3.2"
+  }
+}

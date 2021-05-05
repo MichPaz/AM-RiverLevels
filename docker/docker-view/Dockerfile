@@ -1,0 +1,5 @@
+FROM node:12.12.0
+
+EXPOSE $VIEW_PORT
+WORKDIR /usr/src/api
+

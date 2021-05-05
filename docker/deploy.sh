@@ -53,10 +53,19 @@ export NPM_INSTALL
 
 export PSQL_PATH=$PROJ_DIR/db/$NODE_ENV/psql
 export RDM_PATH=$PROJ_DIR/rdm
+export VIEW_PATH=$PROJ_DIR/view
+
 export STORAGE_PATH=$PROJ_DIR/storage/$NODE_ENV
-# echo "RDM_PATH - $RDM_PATH";
 
 $echo cp $NODE_ENV.env .env
 
-# echo "docker-compose up $HAS_BUILD $HAS_FORCE"
+if [[ "$NODE_ENV" = "dev" ]]; then
+    export STDIN_OPEN='true'
+	else
+    export STDIN_OPEN='false'
+fi
+
+
 $echo docker-compose up $HAS_BUILD $HAS_FORCE
+
+# docker-compose config

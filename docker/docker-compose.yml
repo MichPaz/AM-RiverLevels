@@ -20,7 +20,26 @@ services:
     environment:
       # - RDM_HOST=${RDM_HOST}
       - FORCE=${FORCE}
-      - ENV_SERVER=${ENV_SERVER}
+      - NPM_INSTALL=${NPM_INSTALL}
+
+  am-river-view:
+    build: ./docker-view
+    stdin_open: "${STDIN_OPEN}"
+    command: ["bash","/usr/src/api/start.sh"]
+    restart: always
+    ports:
+      - "${VIEW_PORT}:${VIEW_PORT}"
+    expose:
+      - "${VIEW_PORT}"
+    container_name: ${VIEW_HOST}
+    # depends_on:
+    #   - am-river-psql
+    volumes:
+      - ${VIEW_PATH}:/usr/src/api
+    env_file:
+      - ./.env
+    environment:
+      - NODE_ENV=${NODE_ENV}
       - NPM_INSTALL=${NPM_INSTALL}
 
   am-river-psql:

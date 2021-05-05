@@ -1,0 +1,52 @@
+html, body, footer {
+    /* background-color: rgba(230, 164, 138, 0.026) !important; */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.back-login {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/* .Mui-focusVisible {
+    box-shadow: none !important;  
+} */
+
+/* Pagination */
+
+.MuiPaginationItem-page.Mui-selected {
+    background-color: #027f9ec0 !important;
+    color: aliceblue;
+}
+
+/* Table Header */
+
+.MuiTableSortLabel-root {
+    color: rgba(240, 248, 255, 0.85) !important;
+}
+
+.MuiTableSortLabel-root.MuiTableSortLabel-active {
+    color: aliceblue !important;
+}
+
+.MuiTableSortLabel-root.MuiTableSortLabel-active.MuiTableSortLabel-root.MuiTableSortLabel-active .MuiTableSortLabel-icon {
+    color: aliceblue !important;
+}
+
+.MuiTableHead-root {
+    background-color: rgb(0, 0, 0);
+    background-image: linear-gradient(to right, #027f9e77, #027f9e5d, #027f9e5d, #027f9ea1);
+}
+
+.MuiButtonBase-root {
+    outline: none !important;
+}
+
+.Mui-focusVisible {
+    outline: none !important;
+}

@@ -1,0 +1,18 @@
+.page-link{
+    border-color: rgba(255, 124, 54, 0.932);
+    color: rgba(255, 124, 54, 0.932);
+}
+
+.page-item.active .page-link{
+    background-color: rgba(255, 124, 54, 0.932);
+    border-color: rgba(255, 124, 54, 0.932);
+}
+
+.page-link:hover{
+    border-color: rgba(255, 124, 54, 0.932);
+    color: rgba(255, 124, 54, 0.932);
+}
+
+.page-item.disabled .page-link{
+    border-color: rgba(255, 124, 54, 0.932);
+}

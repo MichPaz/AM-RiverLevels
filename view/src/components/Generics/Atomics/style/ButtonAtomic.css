@@ -1,0 +1,13 @@
+.ButtonAtomic{
+    /* width: 120px; */
+    /* height: 40px; */
+    /* border: none; */
+    color: #ffffff !important;
+    background-color: #95C11F !important;
+    /* box-shadow: 5px 5px 5px 0px var(--ColorShadow); */
+    /* margin: 5px; */
+}
+
+.ButtonAtomic:hover{
+    background-color: #3AAA35 !important;
+}
