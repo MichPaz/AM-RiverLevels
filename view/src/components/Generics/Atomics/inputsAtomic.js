@@ -29,7 +29,7 @@ export const TextFieldAtomic = (props) => {
             rows={prop.inputType === 'multiline' ? 4 : undefined}
             required={prop.required}
 
-            margin="dense"
+            // margin="dense"
             variant="outlined"
             fullWidth
 
@@ -60,7 +60,7 @@ export const MultlineFieldAtomic = (props) => {
             value={values[prop.key]}
             required={prop.required}
 
-            margin="dense"
+            // margin="dense"
             variant="outlined"
             fullWidth
 
@@ -91,7 +91,7 @@ export const PasswordFieldAtomic = (props) => {
             value={values[prop.key]}
             required={prop.required}
 
-            margin="dense"
+            // margin="dense"
             variant="outlined"
             fullWidth
 
@@ -124,7 +124,7 @@ export const DateFieldAtomic = (props) => {
             placeholder={prop.placeholder || ""}
             required={prop.required}
 
-            margin="dense"
+            // margin="dense"
             variant="outlined"
             fullWidth
 
@@ -156,11 +156,12 @@ export function DateTimeFieldAtomic(props) {
                     autoOk
                     disableFuture
                     hideTabs
+                    fullWidth
 
                     disabled={disabled}
                     name={prop.key}
                     inputVariant="outlined"
-                    margin='dense'
+                    // margin='dense'
                     helperText={touched[prop.key] ? errors[prop.key] : (prop.helperText || '')}
                     value={values[prop.key]}
                     onChange={handleChangeMask}
@@ -217,7 +218,7 @@ export const SelectFieldAtomic = (props) => {
     const { items, disabled, prop, values, handleChange, handleBlur, touched, errors } = props
 
     return (
-        <FormControl variant="outlined" margin='dense' fullWidth required={prop.required} disabled={disabled}>
+        <FormControl variant="outlined" /*margin='dense'*/ fullWidth required={prop.required} disabled={disabled}>
             <InputLabel>{prop.label}</InputLabel>
             <Select
                 label={prop.label}
@@ -243,7 +244,7 @@ export const SelectFieldAtomicSimple = (props) => {
     const { items, disabled, prop, value, onChange } = props
 
     return (
-        <FormControl variant="outlined" margin='dense' fullWidth required={prop.required} disabled={disabled}>
+        <FormControl variant="outlined" /*margin='dense'*/ fullWidth required={prop.required} disabled={disabled}>
             <InputLabel>{prop.label}</InputLabel>
             <Select
                 label={prop.label}

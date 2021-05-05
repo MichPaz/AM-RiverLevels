@@ -3,10 +3,12 @@ import { Switch, Route } from 'react-router-dom';
 
 
 import Home from '../view/Home';
+import DadosHidrometeorologicos from '../view/dadosHidrometeorologicos';
+
 import NotFound from '../main/not-found';
 
 const rotas = {
-
+  'dadosHidrometeorologicos': DadosHidrometeorologicos
 }
 
 

@@ -2,7 +2,7 @@ import EventEmitter from 'events';
 import AppDispatcher from '../../dispatcher/appDispatcher';
 import api from '../../services/api';
 import FeedbackMessage from '../feedbackMessage/snack'
-import ErrorHandling, { errorRedirect } from '../../errors'
+import ErrorHandling from '../../errors'
 // import SecurityStores from '../security'
 
 
@@ -20,7 +20,7 @@ class ModulesStores extends EventEmitter {
         this.toRestore = undefined
         this.restoreConfirmation = undefined
         this.id = undefined
-        this.q = undefined
+        this.query = undefined
 
         this.CHANGE_EVENT = 'CHANGE';
         this.limit = 10;
@@ -35,11 +35,11 @@ class ModulesStores extends EventEmitter {
     }
 
     async registerActions(action) {
-        
+
         switch (action.actionType) {
 
             case `LIST_${this.modelName}`:
-                this.q = action.q || ``
+                this.query = action.query || ``
                 await this.setList();
                 this.emit(this.CHANGE_EVENT);
                 break;
@@ -90,7 +90,7 @@ class ModulesStores extends EventEmitter {
 
 
     async setList(list) {
-        
+
         if (list) {
             this.list = list
         } else {
@@ -261,11 +261,11 @@ class ModulesStores extends EventEmitter {
     }
 
     errorHandling(error) {
-        const red = errorRedirect(error)
-        if (red) {
-            this.dispatchMessage({ variant: 'error', message: red })
-            // SecurityStores.emit(SecurityStores.CHANGE_EVENT)
-        }
+        // const red = errorRedirect(error)
+        // if (red) {
+        //     this.dispatchMessage({ variant: 'error', message: red })
+        // SecurityStores.emit(SecurityStores.CHANGE_EVENT)
+        // }
     }
 
     messageErrors(err, messageDefault) {

@@ -30,10 +30,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore'
 // import { useSelector, useDispatch } from 'react-redux'
 // import Notice from './notice';
 
-import SettingsIcon from '@material-ui/icons/Settings'
 import AssessmentIcon from '@material-ui/icons/Assessment'
-import WidgetsIcon from '@material-ui/icons/Widgets'
-import AssignmentIcon from '@material-ui/icons/Assignment'
 
 const drawerWidth = 320
 
@@ -320,67 +317,19 @@ function MenuWebLateral() {
             handleDrawerClose={handleDrawerClose}
           />
 
-          <SubMenu
-            handleDrawerClose={handleDrawerClose}
-            data={{
-              label: 'Gerenciar OS',
-              icon: AssignmentIcon,
-              items: [
-                // { href: '#', label: 'Especialidades' },
-                { href: 'osHistorico', label: 'Histórico de OS' },
-                { href: 'osAberto', label: 'OS em Aberto' },
-                { href: 'ordemServico', label: '(OS) Ordem de Serviço' },
-              ]
-            }}
-          />
 
           <SubMenu
             handleDrawerClose={handleDrawerClose}
             data={{
-              label: 'Cadastros',
-              icon: WidgetsIcon,
-              items: [
-                { href: 'areas', label: 'Áreas' },
-                { href: 'causas', label: 'Causas' },
-                { href: 'equipamento', label: 'Equipamentos' },
-                { href: 'equipamentos/descartados', label: 'Equipamentos Descartados' },
-                { href: 'idiomas', label: 'Idiomas' },
-                { href: 'intervencao', label: 'Intervenções' },
-                { href: 'linha', label: 'Linhas' },
-                { href: 'sintoma', label: 'Sintomas' },
-                { href: 'tarefaCheckList', label: 'Check List' },
-                { href: 'tipoEquipamentos', label: 'Tipos de Equipamento' },
-                { href: 'especialidade', label: 'Especialidades' },
-                { href: 'setores', label: 'Setores' },
-                { href: 'centroCustos', label: 'Centros de Custo' },
-                { href: 'localizacoes', label: 'Localizações' },
-                { href: 'unidadeMedidas', label: 'Unidades de Medidas' }
-              ]
-            }}
-          />
-
-          <SubMenu
-            handleDrawerClose={handleDrawerClose}
-            data={{
-              label: 'Relatórios',
+              label: 'Gráficos',
               icon: AssessmentIcon,
-              items: []
-            }}
-          />
-
-          <SubMenu
-            handleDrawerClose={handleDrawerClose}
-            data={{
-              label: 'Configurações',
-              icon: SettingsIcon,
               items: [
-                { href: 'usuarios', label: 'Usuários' },
-                { href: 'grupoUsuarios', label: 'Grupos de Usuários' },
-                { href: 'parametros', label: 'Parâmetros do Sistema' },
-                { href: 'backups', label: 'Backups do Sistema' }
+                { href: 'dadosHidrometeorologicos', label: 'Dados Hidrometeorológicos' },
+                { href: '#', label: 'Item' },
               ]
             }}
           />
+
         </List>
       </SwipeableDrawer>
       {renderMenu}

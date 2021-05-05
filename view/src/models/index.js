@@ -23,6 +23,12 @@ const model = [
 ]
 */
 
+const styleGrid = {
+    marginTop: 16,
+    marginLeft: 8,
+    marginRigth: 8,
+    marginBotton: 8,
+}
 class Model {
 
     toStore(values) {
@@ -98,7 +104,7 @@ class Model {
                 if (prop.inputType === 'text' || prop.inputType === 'multiline') {
                     inputs.push(
                         <Grid item xs={12} md={key.md} key={prop.key}>
-                            <div style={{ marginLeft: 5, marginRight: 5 }}>
+                            <div style={styleGrid}>
                                 <TextFieldAtomic
                                     prop={prop}
                                     values={values}
@@ -115,7 +121,7 @@ class Model {
                 if (prop.inputType === 'password') {
                     inputs.push(
                         <Grid item xs={12} md={key.md} key={prop.key}>
-                            <div style={{ marginLeft: 5, marginRight: 5 }}>
+                            <div style={styleGrid}>
                                 <PasswordFieldAtomic
                                     prop={prop}
                                     values={values}
@@ -132,7 +138,7 @@ class Model {
                 if (prop.inputType === 'date') {
                     inputs.push(
                         <Grid item xs={12} md={key.md} key={prop.key}>
-                            <div style={{ marginLeft: 5, marginRight: 5 }}>
+                            <div style={styleGrid}>
                                 <DateFieldAtomic
                                     prop={prop}
                                     values={values}
@@ -149,7 +155,7 @@ class Model {
                 if (prop.inputType === 'datetime') {
                     inputs.push(
                         <Grid item xs={12} md={key.md} key={prop.key}>
-                            <div style={{ marginLeft: 5, marginRight: 5 }}>
+                            <div style={styleGrid}>
                                 <DateTimeFieldAtomic
                                     prop={prop}
                                     values={values}
@@ -167,19 +173,17 @@ class Model {
                 if (prop.inputType === 'select') {
                     inputs.push(
                         <Grid item xs={12} md={key.md} key={prop.key}>
-                            <div style={{ marginLeft: 5, marginRight: 5 }}>
-                                <prop.component
-                                    prop={prop}
-                                    values={values}
-                                    handleChange={handleChange}
-                                    handleBlur={handleBlur}
-                                    touched={touched}
-                                    errors={errors}
-                                    setFieldValue={setFieldValue}
-                                    disabled={key.disabled}
-                                />
-                            </div>
-                        </Grid>
+                            <prop.component
+                                prop={prop}
+                                values={values}
+                                handleChange={handleChange}
+                                handleBlur={handleBlur}
+                                touched={touched}
+                                errors={errors}
+                                setFieldValue={setFieldValue}
+                                disabled={key.disabled}
+                            />
+                        </Grid >
                     )
                 }
             }

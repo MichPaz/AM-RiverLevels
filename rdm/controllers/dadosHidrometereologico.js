@@ -5,11 +5,8 @@ module.exports = {
     list(req, res) {
 
         const { startDate, endDate } = req.query
-        const estacoes = req.query.estacoes.split(',')
+        const estacao = req.query.estacao
         let { limit, offset } = req.query
-
-        console.log(estacoes)
-
 
         if (!startDate)
             return res.status(400).send({ message: 'query startDate is required' });
@@ -22,9 +19,7 @@ module.exports = {
             .findAndCountAll(
                 {
                     where: {
-                        codEstacao: {
-                            [Op.in]: estacoes
-                        },
+                        codEstacao: estacao,
                         dataHora: {
                             [Op.between]: [startDate, endDate]
                         }
@@ -32,6 +27,7 @@ module.exports = {
                     limit,
                     offset,
                     logging: true,
+                    order: [['dataHora', 'ASC']]
                 }
             )
             .then((estacoes) => res.status(200).send(estacoes))

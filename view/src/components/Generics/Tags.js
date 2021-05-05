@@ -52,7 +52,7 @@ export function TagsFormik(props) {
             renderInput={(params) => (
                 <TextField
                     {...params}
-                    margin={margin ? margin : 'dense'}
+                    margin={margin ? margin : 'normal'}
                     fullWidth
                     required={prop.required}
                     name={prop.key}
