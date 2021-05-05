@@ -116,6 +116,15 @@ async function populateByDadosHidrometeorologicos(req, res) {
             console.log(filePath);
 
             for (let medicao of data) {
+
+                medicao = {
+                    codEstacao: medicao.CodEstacao,
+                    dataHora: medicao.DataHora,
+                    vazao: medicao.Vazao,
+                    nivel: medicao.Nivel,
+                    chuva: medicao.Chuva,
+                }
+                
                 await DadosHidrometereologico.create(medicao)
                     .catch(() => { })
             }

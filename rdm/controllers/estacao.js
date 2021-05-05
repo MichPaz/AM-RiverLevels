@@ -3,7 +3,7 @@ const Estacao = require('../models').Estacao;
 module.exports = {
     list(req, res) {
         return Estacao
-            .findAll()
+            .findAndCountAll()
             .then((estacoes) => res.status(200).send(estacoes))
             .catch((error) => { res.status(400).send(error); });
     },

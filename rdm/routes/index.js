@@ -9,6 +9,7 @@ router.get('/populateBygetDadosTelemetricos', require('../controllers/populate')
 router.get('/populateEstacoes', require('../controllers/populate').populateEstacoes)
 router.get('/populateByDadosHidrometeorologicos', require('../controllers/populate').populateByDadosHidrometeorologicos)
 router.use('/estacao', require('./estacao'))
+router.use('/dadosHidrometereologico', require('./dadosHidrometereologico'))
 
 const classroomController = require('../controllers').classroom;
 const studentController = require('../controllers').student;
